@@ -5,12 +5,6 @@ import java.util.Random;
 
 public class Sensori {
     //variabili della classe
-    public String stato;
-
-    private int temperatura;
-    private int livelloInquinamento;
-    private int numVeicoli;
-    public String targaVeicolo;
 
     private static Sensori istance;
     public static Sensori getInstance()  {
@@ -18,6 +12,12 @@ public class Sensori {
             istance=new Sensori();
         return istance;
     }
+    public String stato;
+
+    private int temperatura;
+    private int livelloInquinamento;
+    private int numVeicoli;
+    public String targaVeicolo;
 
     public Sensori()
     //costruttore
@@ -28,7 +28,7 @@ public class Sensori {
 
     }
 
-    private final Database db =new Database();
+    private final Database db =Database.getInstance();
 
 
     //Attraverso questo metodo si genera casualmente la targa che verrà poi successivamente assegnata ad un veicolo
@@ -106,19 +106,8 @@ public class Sensori {
             JTextField via = new JTextField(10);
             JTextField giorno = new JTextField(10);
             JTextField mese = new JTextField(10);
-            //Object[] bottoniGrafici = {"OK", "Cancel"};
-            try {
-                /*JPanel myPanel = new JPanel();
-                myPanel.add(new JLabel("Immetti la via,il giorno e il mese del sensore di cui si vogliono conoscere i valori:\n"));
-                myPanel.add(Box.createHorizontalStrut(10));
-                myPanel.add(new JLabel("Via:\n"));
-                myPanel.add(via);
-                myPanel.add(Box.createHorizontalStrut(10));
-                myPanel.add(new JLabel("Giorno:\n"));
-                myPanel.add(giorno);
-            myPanel.add(Box.createHorizontalStrut(10));
-            myPanel.add(new JLabel("Mese:\n"));
-            myPanel.add(mese);*/
+             try {
+
                 Object[] message = {
                         "Via: ", via,
                         "Giorno: ", giorno,
@@ -137,7 +126,7 @@ public class Sensori {
                     gg= Integer.parseInt(g);
                     mm= Integer.parseInt(m);
                     System.out.println(g + m);
-                    db.connessioneDB4(viaB, gg, mm);
+                    db.prelevaValori(viaB, gg, mm);
                     if (viaB == null)
                         throw new Exception();
                 }

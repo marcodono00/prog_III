@@ -21,7 +21,7 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-    final Calendar dataAttuale = Calendar.getInstance();
+    private final Calendar dataAttuale = Calendar.getInstance();
 
     private final int giornoAtt = dataAttuale.get(Calendar.DAY_OF_MONTH);
     private final int meseAtt = dataAttuale.get(Calendar.MONTH) + 1;
@@ -174,7 +174,7 @@ public class Database {
     /*La funzione va a ricercare i valori richiesti in input (nel caso specifico la via in cui è localizzato il sensore,
     * il giorno e il mese della rilevazione), per poi memorizzarli all'interno dell'array che va a restituire come output che verrà
     * utilizzato dalla funzione ottieniValori localizzata nella classe Sensori per mostrare a schermo i valori ricercati*/
-    public void connessioneDB4(String viaDaCercare, int giorno, int mese) throws SQLException
+    public void prelevaValori(String viaDaCercare, int giorno, int mese) throws SQLException
     {int temperatura,livelloInquinamento,numeroVeicoli;
          PreparedStatement pd=connessione.prepareStatement("SELECT temperatura,livello_inquinamento,numero_veicoli FROM SENSORE WHERE VIA=? AND GIORNO_ATTUALE=? AND MESE_ATTUALE=?");
          pd.setString(1,viaDaCercare);
@@ -198,7 +198,7 @@ public class Database {
         catch(SQLException ret)
         {
             ret.printStackTrace();
-        connessioneDB4(viaDaCercare,giorno,mese);
+        prelevaValori(viaDaCercare,giorno,mese);
         }
 
         catch(Exception ty)
