@@ -51,9 +51,9 @@ public class main {
          Connection rtt = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "strunz");
          Object[] bottoni = {"Inserisci", "Lettura", "Grafici", "Esci"};
          Object[] bottoniGrafici = {"Visualizza", "Esci"};
-         Grafici g = new Grafici();
-         Sensori a1 = new Sensori();
-         Polizia p1 = new Polizia();
+         Grafici g = Grafici.getInstance();
+         Sensori a1 = Sensori.getInstance();
+         Polizia p1 = Polizia.getInstance();
          String status;
          JOptionPane.showMessageDialog(null,"Benvenuto nel nuovo software di gestione dell'inquinamento,che permette di effettuare svariate operazioni","Benvenuto",JOptionPane.INFORMATION_MESSAGE);
          System.out.println("\nLa legenda della lattura è la seguente : \ncodice verde,tutti i parametri sono sotto soglia;");

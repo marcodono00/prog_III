@@ -15,6 +15,13 @@ public class Database {
         }
     }
 
+    private static Database istance;
+    public static Database getInstance()  {
+        if(istance==null)
+            istance=new Database();
+        return istance;
+    }
+
     final Calendar dataAttuale = Calendar.getInstance();
 
     private final int giornoAtt = dataAttuale.get(Calendar.DAY_OF_MONTH);

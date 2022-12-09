@@ -12,6 +12,12 @@ public class Sensori {
     private int numVeicoli;
     public String targaVeicolo;
 
+    private static Sensori istance;
+    public static Sensori getInstance()  {
+        if(istance==null)
+            istance=new Sensori();
+        return istance;
+    }
 
     public Sensori()
     //costruttore

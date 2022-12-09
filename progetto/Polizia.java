@@ -2,6 +2,13 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 public class Polizia {
+
+    private static Polizia istance;
+    public static Polizia getInstance()  {
+        if(istance==null)
+            istance=new Polizia();
+        return istance;
+    }
      private Sensori f1;
 
     public void setF1(Sensori d1) {
