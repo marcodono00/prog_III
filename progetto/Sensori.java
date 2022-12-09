@@ -39,7 +39,7 @@ public class Sensori {
     codice giallo , vi sono alcuni valori sopra la soglia imposta dall'amministratore,
     codice rosso , tutti i valori sono al di sopra della soglia imposta dall'amministratore*/
     public String risultatoLettura() throws NullPointerException  /*effettua la lettura dei valori e a seconda del fatto che questi rientrino nella soglia o meno viene impostato uno stato*/ {
-        try { Automobile auto=new Automobile();
+        try { Automobile auto=Automobile.getInstance();
             Calendar dataAttuale = Calendar.getInstance();
             int meseA = dataAttuale.get(Calendar.MONTH) + 1;
             Random num = new Random();
@@ -61,7 +61,7 @@ public class Sensori {
             livelloInquinamento = num.nextInt(5100);
             numVeicoli = num.nextInt(150);
             targaAuto = Automobile.generaTarga();
-            Polizia p1 = new Polizia();
+            Polizia p1 = Polizia.getInstance();
             p1.setF1(this);
             if ((temperatura <= 20 && livelloInquinamento <= 300 && numVeicoli <= 70))
             //Se i valori sono tutti sotto soglia allora lo stato sarà codice verde

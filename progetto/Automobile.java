@@ -1,9 +1,12 @@
 public class Automobile {
+    private static Automobile istance;
+    public static Automobile getInstance()  {
+        if(istance==null)
+            istance=new Automobile();
+        return istance;
+    }
     private static String targaVeicolo;
 
-    public Automobile() {
-        targaVeicolo="";
-    }
 
     public static String generaTarga() {
         StringBuilder s = new StringBuilder();

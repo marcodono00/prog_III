@@ -1,3 +1,4 @@
+import org.jetbrains.annotations.Nullable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -10,16 +11,15 @@ import java.util.Calendar;
 
 public class Grafici extends JFrame{
 
-    private final JFrame frame=new JFrame("Grafici valori sensori");
     private static Grafici istance;
     public static Grafici getInstance()  {
         if(istance==null)
             istance=new Grafici();
         return istance;
     }
+    private final JFrame frame=new JFrame("Grafici valori sensori");
 
-
-    private JDBCXYDataset createDataset(String valore) {
+    private @Nullable JDBCXYDataset createDataset(String valore) {
         try {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "strunz");

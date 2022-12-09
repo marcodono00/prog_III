@@ -22,7 +22,7 @@ public class Polizia {
          effettuando una verifica della targa secondo il principio delle targhe alterne:
         targhe pari giorni pari , targhe dispari in giorni dispari.Se quests regola non viene seguita viene inviata una multa e si dirotta il controllo della circolazione*/
         String status;
-        Database db=new Database();
+        Database db=Database.getInstance();
         status=f1.risultatoLettura();
         LocalDate dataAttuale=LocalDate.now();
         char ab=f1.targaVeicolo.charAt(6);

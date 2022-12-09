@@ -5,6 +5,13 @@ import java.util.Objects;
 
 public class Database {
 
+    private static Database istance;
+    public static Database getInstance()  {
+        if(istance==null)
+            istance=new Database();
+        return istance;
+    }
+
     private final Connection connessione;
 
     {
@@ -14,25 +21,10 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-
-    private static Database istance;
-    public static Database getInstance()  {
-        if(istance==null)
-            istance=new Database();
-        return istance;
-    }
-
     final Calendar dataAttuale = Calendar.getInstance();
 
     private final int giornoAtt = dataAttuale.get(Calendar.DAY_OF_MONTH);
     private final int meseAtt = dataAttuale.get(Calendar.MONTH) + 1;
-
-
-    
-
-
-
-
 
 
     /*Il metodo seguente effettua l'inserimento dei valori rilevati dai sensori,effettuando il controllo dei duplicati
@@ -60,7 +52,7 @@ public class Database {
                 stmt.execute();
             }
 
-            Polizia p1 = new Polizia();
+            Polizia p1 = Polizia.getInstance();
             p1.setF1(s1);
         }
 
@@ -78,7 +70,7 @@ public class Database {
          che ha commesso l'nfrazione e la città in cui è avvenuto ci ò i dati relativi
         * come il giorno,il mese e la via dell'infrazione corrispondente,insieme alla targa del veicolo che ha commesso quest'ultimo*/
     public void infrazioneVeicolo(int numVeic, String viaSensore, String numTarga, Sensori s2) throws SQLException {
-            Polizia pz = new Polizia();
+            Polizia pz = Polizia.getInstance();
             pz.setF1(s2);
             String viaDeviazione = "";
             PreparedStatement stmt1 = connessione.prepareStatement("INSERT INTO polizia(giorno_infrazione,mese_infrazione,via_infrazione,targa_veicolo) VALUES (?, ?,?,?)");
