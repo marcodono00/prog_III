@@ -90,7 +90,12 @@ public class Sensori {
                 throw new Exception();
 
             //al termine restituisce lo stato ottenuto dalla lettura dei valori
-        } catch (Exception nd) {
+        }catch(NullPointerException cr)
+        {
+            risultatoLettura();
+        }
+
+        catch (Exception nd) {
             nd.printStackTrace();
             System.out.println("Errore!!");
             risultatoLettura();
