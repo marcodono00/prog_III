@@ -55,7 +55,8 @@ public class main {
          Sensori a1 = Sensori.getInstance();
          Polizia p1 = Polizia.getInstance();
          String status;
-         JOptionPane.showMessageDialog(null,"Benvenuto nel nuovo software di gestione dell'inquinamento,che permette di effettuare svariate operazioni","Benvenuto",JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null,"Benvenuto nel nuovo software di gestione di Smart City CityLife","Benvenuto",JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null,"Attraverso questo programma è possibile effettuare una gestione efficiente della Smart city","Presentazione",JOptionPane.INFORMATION_MESSAGE);
          System.out.println("\nLa legenda della lattura è la seguente : \ncodice verde,tutti i parametri sono sotto soglia;");
          System.out.println("codice giallo,alcuni parametri sono sopra soglia.");
          System.out.println("codice rosso,tutti i parametri sono sopra soglia.");
@@ -69,15 +70,20 @@ public class main {
                  int r = JOptionPane.showOptionDialog(null, "Premere lettura per ottenere la lettura dei valori dai sensori,premere inserisci per inserire un sensore nel sistema,premere grafici per visualizzare graficamente le rilevazioni dei sensori, premere esci per chiudere il programma", "Gestione traffico", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, bottoni, bottoni[0]);
                  switch (r) {
                      case 0 -> {
+                         JOptionPane.showMessageDialog(null,"Il sistema possiede tre stati:codice verde,in cui nessun valore rilevato è sopra soglia \n codice giallo,alcuni valori rilevati sono sopra soglia \n codice rosso,tutti i valori rilevati sono sopra soglia,in questo casso verranno prese contromisure","Legenda",JOptionPane.INFORMATION_MESSAGE);
                          status = a1.risultatoLettura();
                          p1.setF1(a1);
                          //A seconda del codice restituito vengono intraprese azioni differenti
                          switch (status) {
                              //Se lo stato della funzione risultatoLettura è codice giallo o verde non vengono intraprese ulteriori azioni
-                             case "Codice giallo", "Codice verde" -> {
+                             case "Codice verde" -> {
                                  System.out.println("Risultato della lettura: " + status + ",non sono necessari interventi!");
                                  JOptionPane.showMessageDialog(null, "La lettura ha restituito codice giallo,pertanto non verranno intrapresi interventi!");
+                             }
 
+                             case "Codice giallo" -> {
+                                 System.out.println("Risultato della lettura: " + status + ",non sono necessari interventi!");
+                                 JOptionPane.showMessageDialog(null, "La lettura ha restituito codice giallo,pertanto non verranno intrapresi interventi!");
                              }
 
                              //Se lo stato restituito dalla funzione risultatoLettura è codice rosso allora invia la multa al veicolo coinvolto nell'infrazione

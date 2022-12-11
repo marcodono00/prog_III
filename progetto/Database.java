@@ -39,7 +39,6 @@ public class Database {
             stmt.setInt(4, giornoAtt);
             stmt.setInt(5, meseAtt);
             stmt.setString(6, viaSensore);
-            stmt.execute();
 
             if (temperatura < 10 || viaSensore.equals(" ")) {
                 viaSensore=JOptionPane.showInputDialog(null,"Non è stata inserita una via!Inserire la via corretta:");
@@ -51,6 +50,8 @@ public class Database {
                 stmt.setString(6, viaSensore);
                 stmt.execute();
             }
+
+            stmt.execute();
 
             Polizia p1 = Polizia.getInstance();
             p1.setF1(s1);
@@ -97,13 +98,13 @@ public class Database {
                     viaDeviazione=JOptionPane.showInputDialog(null,"Errore,inserire la via in cui si vogliono deviare i veicoli:");
                     System.out.println("Via già presente all'interno del database!!");
                 }
-                catch (Exception rt)
+
+                catch(NullPointerException tx)
                 {
-                    rt.printStackTrace();
                     connessione.setAutoCommit(false);
                     connessione.rollback();
                     JOptionPane.showMessageDialog(null,"Errore,inserisci una via");
-
+                 infrazioneVeicolo(numVeic,viaSensore,numTarga,s2);
                 }
 
             }
