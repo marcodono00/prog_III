@@ -18,11 +18,12 @@ public class Grafici extends JFrame{
         return istance;
     }
     private final JFrame frame=new JFrame("Grafici valori sensori");
-
+        /*Crea il dataset che verrà utilizzato dal metodo createGraphics per visualizzare i grafici prelevando i dati dai sensori e creando una tabella "fantoccio",dalla quale
+        * successivamente si estrarranno in maniera selettiva i dati che servono */
     private @Nullable JDBCXYDataset createDataset(String valore) {
         try {
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "strunz");
+                    "jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "databaseprog");
             ResultSet rt;
             Statement st = conn.createStatement();
             PreparedStatement ps = conn.prepareStatement("insert into inventory values (?,?,?,?)");
@@ -64,7 +65,7 @@ public class Grafici extends JFrame{
      public void createGraphics() {
          
          try {
-             Connection cd = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?serverTimezone=UTC&useSSL=false", "root", "strunz");
+             Connection cd = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?serverTimezone=UTC&useSSL=false", "root", "databaseprog");
              frame.setTitle("Rilevamento valori sensori");
              frame.setLayout(new FlowLayout());
              frame.setVisible(true);

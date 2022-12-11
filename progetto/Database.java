@@ -16,7 +16,7 @@ public class Database {
 
     {
         try {
-            connessione = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false","root","strunz");
+            connessione = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false","root","databaseprog");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

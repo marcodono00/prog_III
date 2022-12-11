@@ -22,7 +22,7 @@ public class main {
                 switch (opzioni) {
                     //Se viene cliccato ok,allora viene effettuato l'accesso al database,che se ha successo porta al programma
                     case JOptionPane.OK_OPTION -> {
-                        if (user.equals("root") && pass.equals("strunz")) {
+                        if (user.equals("root") && pass.equals("databaseprog")) {
                             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", user, pass);
                             JOptionPane.showMessageDialog(null, "Accesso riuscito");
                             accessoRiuscito=true;
@@ -48,7 +48,7 @@ public class main {
         }
 
      public static void main(String[] args) throws NullPointerException, SQLException {
-         Connection rtt = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "strunz");
+         Connection rtt = DriverManager.getConnection("jdbc:mysql://localhost:3306/progetto_programmazione?allowPublicKeyRetrieval=true&serverTimezone=UTC&useSSL=false", "root", "databaseprog");
          Object[] bottoni = {"Inserisci", "Lettura", "Grafici", "Esci"};
          Object[] bottoniGrafici = {"Visualizza", "Esci"};
          Grafici g = Grafici.getInstance();
